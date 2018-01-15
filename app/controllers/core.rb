@@ -46,11 +46,11 @@ module WPScan
       end
 
       def before_scan
-        output('banner')
+        output('banner') unless parsed_options[:no_banner]
 
         update_db if update_db_required?
 
-        super(false) # disable banner output
+        super
 
         load_server_module
 
